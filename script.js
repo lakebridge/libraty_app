@@ -34,7 +34,9 @@ openBtn.addEventListener("click", () => {
                         )
 
 popDialog.addEventListener("close", () => {
+    
                         if (popDialog.returnValue !== "confirm") return;
+
                         const data = new FormData(form);
 
                         const newBook = new Book(data.get("title"), data.get("author"), Number(data.get("pages")), data.get("Read?"));
@@ -47,29 +49,30 @@ popDialog.addEventListener("close", () => {
                         }
                         )
 
-function Display() {
-
-    for (const book of myLibrary) {
-        // bookList.textContent = "";
-        const card = document.createElement("div");
-
-        const footer = document.querySelector(".footer");
-
-        card.classList.add("card");
-        card.textContent = `Title: ${book.title}, Author: ${book.author}, ${book.pages} Pages`;
-
-        bookList.insertBefore(card, footer);
-        // bookList.appendChild(card);
-}
-}
 
 function Display_NB(book) {
 
         const card = document.createElement("div");
         card.classList.add("card");
-        card.textContent = `Title: ${book.title}, Author: ${book.author}, ${book.pages} Pages`;
+        const footer = document.querySelector(".footer");
+
+        const status = "Yes";
+
+        if (book.read === false) {
+            status = "No"
+        }
+
+        card.textContent = `Title: ${book.title}, Author: ${book.author}, ${book.pages} Pages, Read?: ${status}`;
 
         bookList.insertBefore(card, footer);
 }
+
+function Display() {
+
+    for (const book of myLibrary) {
+        Display_NB(book);
+}
+}
+
 
 Display();
