@@ -1,0 +1,115 @@
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.card {
+  padding: 1rem;
+  border: 1px solid #002642;
+  background-color: #bbe3ff;
+  border-radius: 6px;
+}
+
+.title {
+    background-color: #1f2933;
+    color: white;
+    text-align: center;
+    padding: 1.5rem 1rem;
+    margin: 0 0 2rem;
+    font-size: 2rem;
+    font-weight: 600;
+    grid-column: 1/-1;
+}
+
+.footer {
+    justify-items: center;
+    margin: 1.5rem auto 0;
+    grid-column: 1/-1;
+}
+
+dialog {
+  border: none;
+  border-radius: 12px;
+  padding: 0;
+  width: min(420px, 90vw);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.45);
+}
+
+dialog form {
+  display: grid;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: white;
+}
+
+dialog form h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+dialog label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  gap: 0.3rem;
+}
+
+dialog input[type="text"],
+dialog input[type="number"] {
+  padding: 0.5rem 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+dialog input:focus {
+  outline: none;
+  border-color: #4f46e5;
+}
+
+
+dialog label.checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+
+dialog menu {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: 0;
+  margin: 0.5rem 0 0;
+}
+
+
+dialog button {
+  padding: 0.45rem 0.9rem;
+  border-radius: 6px;
+  border: none;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+
+dialog button[value="cancel"] {
+  background: #e5e7eb;
+}
+
+
+dialog button[value="confirm"] {
+  background: #4f46e5;
+  color: white;
+}
+
+
+dialog button[value="confirm"]:hover {
+  background: #4338ca;
+}

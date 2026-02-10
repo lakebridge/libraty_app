@@ -4,10 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Project</title>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div class="container">
+        <div class="title">
+            Welcome to my library
+        </div>
+        <div class="footer">
+        <button id="openDialog">Add a book</button>
+        </div>
+    </div>
+
+
+    <dialog id="bookDialog">
+
+        <form method="dialog">
+
+            <h2>Add a book</h2>
+
+            <label>
+            Title
+            <input name="title" required />
+            </label>
+
+            <label>
+            Author
+            <input name="author" required />
+            </label>
+
+            <label>
+            Number of pages
+            <input name="pages" required />
+            </label>
+
+            <label>
+            Read?
+            <input name="read" required />
+            </label>
+
+            <menu>
+            <button formnovalidate value="cancel">Cancel</button>
+            <button value="confirm">Save</button>
+            </menu>
+
+        </form>
+
+    </dialog>
 </body>
 </html>
