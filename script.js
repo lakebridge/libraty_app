@@ -37,11 +37,7 @@ popDialog.addEventListener("close", () => {
                         if (popDialog.returnValue !== "confirm") return;
                         const data = new FormData(form);
 
-                        newBook = {
-                            title: data.get("title"),
-                            author: data.get("author"),
-                            pages: Number(data.get("pages"))
-                        } 
+                        const newBook = new Book(data.get("title"), data.get("author"), Number(data.get("pages")), data.get("Read?"));
 
                         myLibrary.push(newBook);
                         Display_NB(newBook)
@@ -73,7 +69,7 @@ function Display_NB(book) {
         card.classList.add("card");
         card.textContent = `Title: ${book.title}, Author: ${book.author}, ${book.pages} Pages`;
 
-        bookList.appendChild(card);
+        bookList.insertBefore(card, footer);
 }
 
 Display();
