@@ -34,7 +34,7 @@ openBtn.addEventListener("click", () => {
                         )
 
 popDialog.addEventListener("close", () => {
-    
+
                         if (popDialog.returnValue !== "confirm") return;
 
                         const data = new FormData(form);
@@ -65,6 +65,14 @@ function Display_NB(book) {
         card.textContent = `Title: ${book.title}, Author: ${book.author}, ${book.pages} Pages, Read?: ${status}`;
 
         bookList.insertBefore(card, footer);
+
+        const rmvButton = document.createElement("button");
+        rmvButton.classList.add("rmvButton");
+
+        rmvButton.textContent = "Remove 📖";
+
+        card.appendChild(rmvButton);
+        
 }
 
 function Display() {

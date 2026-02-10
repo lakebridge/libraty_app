@@ -5,10 +5,13 @@
 }
 
 .card {
-  padding: 1rem;
-  border: 1px solid #002642;
-  background-color: #bbe3ff;
-  border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border: 1px solid #002642;
+    background-color: #bbe3ff;
+    border-radius: 6px;
+
 }
 
 .title {
@@ -26,6 +29,23 @@
     justify-items: center;
     margin: 1.5rem auto 0;
     grid-column: 1/-1;
+}
+
+.rmvButton {
+    margin-top: 0.75rem;
+    padding: 0.4rem 0.7rem;
+    font-size: 0.85rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #e11d48; /* red */
+    color: white;
+    cursor: pointer;
+    align-self: flex-end;
+    margin-top: auto;
+}
+
+.rmvButton:hover {
+    background-color: #be123c;
 }
 
 dialog {
