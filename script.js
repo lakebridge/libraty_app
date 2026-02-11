@@ -128,6 +128,7 @@ function displayToggle(book, card) {
         toggle.addEventListener("click", () => {
             console.log("before", book.read);            
             book.toggle();
+            readText.textContent = (book.read === true) ? "Read" : "Not Read";
             console.log("after", book.read);
         })
 
