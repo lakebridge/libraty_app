@@ -10,6 +10,11 @@ function Book(title, author, pages, read) {
   // the constructor...
 }
 
+Book.prototype.toggle = function () {
+this.read = !this.read;
+                }
+
+
 function addBookToLibrary(title, author, pages, read) {
     const newBook = new Book(title, author, pages);
     myLibrary.push(newBook);
@@ -40,10 +45,6 @@ popDialog.addEventListener("close", () => {
                         const data = new FormData(form);
 
                         const newBook = new Book(data.get("title"), data.get("author"), Number(data.get("pages")), data.get("Read?"));
-
-                        Book.prototype.toggle = function () {
-                            this.read = !this.read;
-                        }
 
                         myLibrary.push(newBook);
 
@@ -99,8 +100,12 @@ function Display_NB(book) {
 
             myLibrary = myLibrary.filter(b => b.id !== book.id);
         });
-
         
+        displayToggle(book, card);
+        
+}
+
+function displayToggle(book, card) {
         const toggle = document.createElement("input");
         const switchLabel = document.createElement("label");
         const readText = document.createElement("span");
@@ -118,7 +123,7 @@ function Display_NB(book) {
         toggle.addEventListener("click", () => {
             book.toggle();
         })
-        
+       
 }
 
 function Display() {
