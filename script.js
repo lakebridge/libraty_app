@@ -106,6 +106,7 @@ function Display_NB(book) {
 }
 
 function displayToggle(book, card) {
+        
         const toggle = document.createElement("input");
         const switchLabel = document.createElement("label");
         const readText = document.createElement("span");
@@ -114,19 +115,25 @@ function displayToggle(book, card) {
         switchLabel.classList.add = "switch";
         toggle.classList.add = "toggle";
 
-        readText.textContent = (book.read === true) ? "Read" : "Not Read";
-        console.log("book read status in toggle", book.read);
+        toggle.checked = book.read;
 
-        console.log("readText", readText.textContent);
+        readText.textContent = (book.read === true) ? "Read" : "Not Read";
 
         switchLabel.append(toggle, readText);
 
         card.appendChild(switchLabel);
 
+        
+
         toggle.addEventListener("click", () => {
+            console.log("before", book.read);            
             book.toggle();
+            console.log("after", book.read);
         })
+
        
+       
+
 }
 
 function Display() {
