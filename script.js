@@ -1,4 +1,4 @@
-const myLibrary = [];
+let myLibrary = [];
 
 function Book(title, author, pages, read) {
     this.id = crypto.randomUUID();
@@ -10,14 +10,14 @@ function Book(title, author, pages, read) {
   // the constructor...
 }
 
-function addBookToLibrary(title, author, pages) {
+function addBookToLibrary(title, author, pages, read) {
     const newBook = new Book(title, author, pages);
     myLibrary.push(newBook);
   // take params, create a book then store it in the array
 }
 
-addBookToLibrary('from flesh to light', 'yassine laghzioui', 365, false);
-addBookToLibrary('l`art d`entreprendre', 'yassine laghzioui', 246, true);
+addBookToLibrary('From Flesh to Light', 'Yassine Laghzioui', 365, false);
+addBookToLibrary("L'Art d'Entreprendre", 'Yassine Laghzioui', 246, true);
 
 
 const bookList = document.querySelector(".container");
@@ -41,13 +41,19 @@ popDialog.addEventListener("close", () => {
 
                         const newBook = new Book(data.get("title"), data.get("author"), Number(data.get("pages")), data.get("Read?"));
 
+                        Book.prototype.toggle = function () {
+                            this.read = !this.read;
+                        }
+
                         myLibrary.push(newBook);
+
                         Display_NB(newBook)
                         console.log("Dialogue closed, returned value", popDialog.returnValue);
 
                         form.reset();
                         }
                         )
+
 
 
 function Display_NB(book) {
@@ -62,7 +68,21 @@ function Display_NB(book) {
             status = "No"
         }
 
-        card.textContent = `Title: ${book.title}, Author: ${book.author}, ${book.pages} Pages, Read?: ${status}`;
+        const title = document.createElement("div");
+        title.classList.add("row", "title");
+        title.textContent = book.title;
+
+        const meta = document.createElement("div");
+        meta.classList.add("row", "meta");
+        meta.textContent = `${book.author} • ${book.pages} pages`;
+
+        const read = document.createElement("div");
+        read.classList.add("row", "read");
+        read.textContent = `Read: ${status}`;
+
+        // card.textContent = `Title: ${book.title}, Author: ${book.author}, ${book.pages} Pages, Read?: ${status}`;
+
+        card.append(title, meta, read);
 
         bookList.insertBefore(card, footer);
 
@@ -72,6 +92,32 @@ function Display_NB(book) {
         rmvButton.textContent = "Remove 📖";
 
         card.appendChild(rmvButton);
+
+        rmvButton.addEventListener("click", (e) => {
+            e.preventDefault();
+            card.remove();
+
+            myLibrary = myLibrary.filter(b => b.id !== book.id);
+        });
+
+        
+        const toggle = document.createElement("input");
+        const switchLabel = document.createElement("label");
+        const readText = document.createElement("span");
+
+        toggle.type = "checkbox";
+        switchLabel.classList.add = "switch";
+        toggle.classList.add = "toggle";
+
+        readText.textContent = book.read? "Read" : "Not Read";
+
+        switchLabel.append(toggle, readText);
+
+        card.appendChild(switchLabel);
+
+        toggle.addEventListener("click", () => {
+            book.toggle();
+        })
         
 }
 
@@ -81,6 +127,5 @@ function Display() {
         Display_NB(book);
 }
 }
-
 
 Display();

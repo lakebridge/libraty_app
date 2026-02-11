@@ -14,7 +14,7 @@
 
 }
 
-.title {
+.welcome {
     background-color: #1f2933;
     color: white;
     text-align: center;
@@ -47,6 +47,11 @@
 .rmvButton:hover {
     background-color: #be123c;
 }
+
+.row { margin-bottom: 8px; }
+.title { font-weight: 700; font-size: 1.05rem; }
+.meta { opacity: 0.8; }
+.read { font-weight: 600; }
 
 dialog {
   border: none;
