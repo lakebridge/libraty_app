@@ -16,7 +16,7 @@ this.read = !this.read;
 
 
 function addBookToLibrary(title, author, pages, read) {
-    const newBook = new Book(title, author, pages);
+    const newBook = new Book(title, author, pages, read);
     myLibrary.push(newBook);
   // take params, create a book then store it in the array
 }
@@ -44,7 +44,7 @@ popDialog.addEventListener("close", () => {
 
                         const data = new FormData(form);
 
-                        const newBook = new Book(data.get("title"), data.get("author"), Number(data.get("pages")), data.get("Read?"));
+                        const newBook = new Book(data.get("title"), data.get("author"), Number(data.get("pages")), data.get("read") === "true");
 
                         myLibrary.push(newBook);
 
@@ -63,10 +63,10 @@ function Display_NB(book) {
         card.classList.add("card");
         const footer = document.querySelector(".footer");
 
-        const status = "Yes";
+        let status = "Yes";
 
         if (book.read === false) {
-            status = "No"
+            status = "No";
         }
 
         const title = document.createElement("div");
@@ -114,7 +114,10 @@ function displayToggle(book, card) {
         switchLabel.classList.add = "switch";
         toggle.classList.add = "toggle";
 
-        readText.textContent = book.read? "Read" : "Not Read";
+        readText.textContent = (book.read === true) ? "Read" : "Not Read";
+        console.log("book read status in toggle", book.read);
+
+        console.log("readText", readText.textContent);
 
         switchLabel.append(toggle, readText);
 
